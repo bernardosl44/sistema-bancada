@@ -1,0 +1,122 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #1b1b1b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* ABAS */
+.abas {
+    display: flex;
+    gap: 20px;
+    padding: 15px 30px;
+    background-color: #111;
+    border-bottom: 2px solid #ff7600;
+}
+
+.aba {
+    padding: 10px 20px;
+    background: #222;
+    border: none;
+    border-radius: 5px;
+    color: #ffb46a;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.aba:hover, .aba.ativa {
+    background: linear-gradient(45deg, #ff7600, #ff5400);
+    color: white;
+}
+
+/* BLOCOS */
+.conteudo-aba {
+    padding: 40px;
+    width: 95%;
+    max-width: 1500px;
+    margin: 20px auto;
+    background: #111;
+    border-radius: 20px;
+}
+
+.hidden { display: none; }
+
+/* GALERIA */
+.galeria {
+    display: flex;
+    gap: 20px;
+}
+
+.quadrado {
+    background: #333;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+}
+
+.nome-img {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#img1, #img2, #img3, #img4 {
+    height: 300px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* BOLINHAS */
+.estoque-peças {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.andar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.bola {
+    width: 18px;
+    height: 18px;
+    background: #ff7600; /* cor padrão */
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+
+#p1 { background: green; }
+#p2 { background: green; }
+#p3 { background: red; }
+#p4 { background: green; }
+#p5 { background: red; }
+#p6 { background: rgb(0, 0, 0)en; }
+#p7 { background: red; }
+#p8 { background: red; }
+#p9 { background: red; }
+#p10 { background: rgb(0, 0, 0); }
+#p11 { background: red; }
+#p12 { background: red; }
+#p13 { background: grey }
+#p14 { background: green; }
+#p15 { background: red; }
+#p16 { background: red; }
+#p17 { background: red; }
+#p18 { background: green; }
+#p19 { background: red; }
+#p20 { background: red; }
+#p21 { background: green; }
+#p22 { background: green; }
+#p23 { background: red; }
+#p24 { background: rgb(0, 0, 0); }
+#p25 { background: red; }
+#p26 { background: red; }
+#p27 { background: red; }
+#p28 { background: red; }
+

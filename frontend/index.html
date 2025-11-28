@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Bancada</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <nav class="abas">
+        <button class="aba ativa" data-target="menu">Menu</button>
+        <button class="aba" data-target="atualizacoes">Atualizações</button>
+    </nav>
+
+    <section id="menu" class="conteudo-aba">
+        <h1 class="titulo-central">Menu</h1>
+        <p style="text-align:center; font-size:22px;">Esta é a página de teste "Menu".</p>
+    </section>
+
+    <section id="atualizacoes" class="conteudo-aba hidden">
+        <h2 class="titulo-imagens">Galeria do Sistema</h2>
+        
+        <div class="galeria">
+
+            <!-- BANCADA ESTOQUE -->
+            <div class="quadrado">
+                <div class="nome-img">Bancada Estoque</div>
+                <img id="img1" src="bancada_estoque.png">
+
+                <div class="estoque-peças">
+
+                    <!-- ANDAR 1 -->
+                    <div class="andar">
+                        <span class="bola" id="p1"></span>
+                        <span class="bola" id="p2"></span>
+                        <span class="bola" id="p3"></span>
+                        <span class="bola" id="p4"></span>
+                        <span class="bola" id="p5"></span>
+                        <span class="bola" id="p6"></span>
+                    </div>
+
+                    <!-- ANDAR 2 -->
+                    <div class="andar">
+                        <span class="bola" id="p7"></span>
+                        <span class="bola" id="p8"></span>
+                        <span class="bola" id="p9"></span>
+                        <span class="bola" id="p10"></span>
+                        <span class="bola" id="p11"></span>
+                        <span class="bola" id="p12"></span>
+                    </div>
+
+                    <!-- ANDAR 3 -->
+                    <div class="andar">
+                        <span class="bola" id="p13"></span>
+                        <span class="bola" id="p14"></span>
+                        <span class="bola" id="p15"></span>
+                        <span class="bola" id="p16"></span>
+                        <span class="bola" id="p17"></span>
+                        <span class="bola" id="p18"></span>
+                    </div>
+
+                    <!-- ANDAR 4 -->
+                    <div class="andar">
+                        <span class="bola" id="p19"></span>
+                        <span class="bola" id="p20"></span>
+                        <span class="bola" id="p21"></span>
+                        <span class="bola" id="p22"></span>
+                        <span class="bola" id="p23"></span>
+                        <span class="bola" id="p24"></span>
+                    </div>
+
+                    <!-- ANDAR 5 (4 peças) -->
+                    <div class="andar">
+                        <span class="bola" id="p25"></span>
+                        <span class="bola" id="p26"></span>
+                        <span class="bola" id="p27"></span>
+                        <span class="bola" id="p28"></span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- OUTRAS BANCADAS -->
+            <div class="quadrado">
+                <div class="nome-img">Bancada Processo</div>
+                <img id="img2" src="bancada_processo.png">
+            </div>
+
+            <div class="quadrado">
+                <div class="nome-img">Bancada Montagem</div>
+                <img id="img3" src="bancada_montagem (1).png">
+            </div>
+
+            <div class="quadrado">
+                <div class="nome-img">Bancada Expedição</div>
+                <img id="img4" src="bancada_expedicao.png">
+            </div>
+
+        </div>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+</html>
