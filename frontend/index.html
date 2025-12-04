@@ -1,104 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Sistema de Bancada</title>
-    <link rel="stylesheet" href="index.css">
+<meta charset="UTF-8">
+<title>Sistema de Bancada</title>
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-    <nav class="abas">
-        <button class="aba ativa" data-target="menu">Menu</button>
-        <button class="aba" data-target="atualizacoes">Atualizações</button>
-    </nav>
+<!-- LOGIN -->
+<section id="loginSection">
+    <h1 style="text-align:center;">Login</h1>
+    <form id="loginForm">
+        <label for="loginUsuario">Usuário:</label>
+        <input type="text" id="loginUsuario" required>
+        <label for="loginSenha">Senha:</label>
+        <input type="password" id="loginSenha" required>
+        <button type="submit">Entrar</button>
+    </form>
+</section>
 
-    <section id="menu" class="conteudo-aba">
-        <h1 class="titulo-central">Menu</h1>
-        <p style="text-align:center; font-size:22px;">Esta é a página de teste "Menu".</p>
-    </section>
+<!-- ABAS -->
+<nav class="abas hidden">
+    <button class="aba ativa" data-target="dashboard">Dashboard</button>
+    <button class="aba" data-target="cadastros">Cadastros</button>
+    <button class="aba" data-target="pedidos">Pedidos</button>
+</nav>
 
-    <section id="atualizacoes" class="conteudo-aba hidden">
-        <h2 class="titulo-imagens">Galeria do Sistema</h2>
-        
-        <div class="galeria">
-
-            <!-- BANCADA ESTOQUE -->
-            <div class="quadrado">
-                <div class="nome-img">Bancada Estoque</div>
-                <img id="img1" src="bancada_estoque.png">
-
-                <div class="estoque-peças">
-
-                    <!-- ANDAR 1 -->
-                    <div class="andar">
-                        <span class="bola" id="p1"></span>
-                        <span class="bola" id="p2"></span>
-                        <span class="bola" id="p3"></span>
-                        <span class="bola" id="p4"></span>
-                        <span class="bola" id="p5"></span>
-                        <span class="bola" id="p6"></span>
-                    </div>
-
-                    <!-- ANDAR 2 -->
-                    <div class="andar">
-                        <span class="bola" id="p7"></span>
-                        <span class="bola" id="p8"></span>
-                        <span class="bola" id="p9"></span>
-                        <span class="bola" id="p10"></span>
-                        <span class="bola" id="p11"></span>
-                        <span class="bola" id="p12"></span>
-                    </div>
-
-                    <!-- ANDAR 3 -->
-                    <div class="andar">
-                        <span class="bola" id="p13"></span>
-                        <span class="bola" id="p14"></span>
-                        <span class="bola" id="p15"></span>
-                        <span class="bola" id="p16"></span>
-                        <span class="bola" id="p17"></span>
-                        <span class="bola" id="p18"></span>
-                    </div>
-
-                    <!-- ANDAR 4 -->
-                    <div class="andar">
-                        <span class="bola" id="p19"></span>
-                        <span class="bola" id="p20"></span>
-                        <span class="bola" id="p21"></span>
-                        <span class="bola" id="p22"></span>
-                        <span class="bola" id="p23"></span>
-                        <span class="bola" id="p24"></span>
-                    </div>
-
-                    <!-- ANDAR 5 (4 peças) -->
-                    <div class="andar">
-                        <span class="bola" id="p25"></span>
-                        <span class="bola" id="p26"></span>
-                        <span class="bola" id="p27"></span>
-                        <span class="bola" id="p28"></span>
-                    </div>
-
-                </div>
+<!-- DASHBOARD -->
+<section id="dashboard" class="conteudo-aba hidden">
+    <h1 style="text-align:center;">Dashboard</h1>
+    <div class="galeria">
+        <!-- Bancada Estoque -->
+        <div class="quadrado">
+            <div class="nome-img">Bancada Estoque</div>
+            <img src="bancada_estoque.png">
+            <div class="estoque-peças">
+                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
+                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
+                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
+                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
+                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
             </div>
-
-            <!-- OUTRAS BANCADAS -->
-            <div class="quadrado">
-                <div class="nome-img">Bancada Processo</div>
-                <img id="img2" src="bancada_processo.png">
-            </div>
-
-            <div class="quadrado">
-                <div class="nome-img">Bancada Montagem</div>
-                <img id="img3" src="bancada_montagem (1).png">
-            </div>
-
-            <div class="quadrado">
-                <div class="nome-img">Bancada Expedição</div>
-                <img id="img4" src="bancada_expedicao.png">
-            </div>
-
+            <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
         </div>
-    </section>
 
-    <script src="index.js"></script>
+        <!-- Bancada Processo -->
+        <div class="quadrado">
+            <div class="nome-img">Bancada Processo</div>
+            <img src="bancada_processo.png">
+            <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
+        </div>
+
+        <!-- Bancada Montagem -->
+        <div class="quadrado">
+            <div class="nome-img">Bancada Montagem</div>
+            <img src="bancada_montagem (1).png">
+            <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
+        </div>
+
+        <!-- Bancada Expedição -->
+        <div class="quadrado">
+            <div class="nome-img">Bancada Expedição</div>
+            <img src="bancada_expedicao.png">
+            <div class="estoque-peças">
+                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
+                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
+                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
+            </div>
+            <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
+        </div>
+    </div>
+</section>
+
+<!-- CADASTROS -->
+<section id="cadastros" class="conteudo-aba hidden">
+    <h1 style="text-align:center;">Cadastros</h1>
+    <form id="cadastroForm">
+        <label for="cadNome">Nome:</label>
+        <input type="text" id="cadNome" required>
+        <label for="cadSobrenome">Sobrenome:</label>
+        <input type="text" id="cadSobrenome" required>
+        <label for="cadNascimento">Data de Nascimento:</label>
+        <input type="date" id="cadNascimento" required>
+        <label for="cadTipo">Tipo de Usuário:</label>
+        <select id="cadTipo">
+            <option>Aluno</option>
+            <option>Professor</option>
+        </select>
+        <label for="cadUsuario">Usuário:</label>
+        <input type="text" id="cadUsuario" required>
+        <label for="cadSenha">Senha:</label>
+        <input type="password" id="cadSenha" required>
+        <button type="submit">Registrar</button>
+    </form>
+    <ul id="cadastroList"></ul>
+</section>
+
+<!-- PEDIDOS -->
+<section id="pedidos" class="conteudo-aba hidden">
+    <h1 style="text-align:center;">Pedidos</h1>
+    <form id="pedidosForm">
+        <label for="pedidoNome">Nome do Pedido:</label>
+        <input type="text" id="pedidoNome" required>
+        <label for="pedidoBase">Cor da Base:</label>
+        <select id="pedidoBase">
+            <option>Preto</option><option>Branco</option><option>Verde</option><option>Amarelo</option><option>Azul</option>
+        </select>
+        <label for="pedidoFrente">Cor da Parede da Frente:</label>
+        <select id="pedidoFrente">
+            <option>Preto</option><option>Branco</option><option>Verde</option><option>Amarelo</option><option>Azul</option>
+        </select>
+        <label for="pedidoEsquerda">Cor da Parede da Esquerda:</label>
+        <select id="pedidoEsquerda">
+            <option>Preto</option><option>Branco</option><option>Verde</option><option>Amarelo</option><option>Azul</option>
+        </select>
+        <label for="pedidoDireita">Cor da Parede da Direita:</label>
+        <select id="pedidoDireita">
+            <option>Preto</option><option>Branco</option><option>Verde</option><option>Amarelo</option><option>Azul</option>
+        </select>
+        <button type="submit">Criar Pedido</button>
+    </form>
+    <ul id="pedidosList"></ul>
+</section>
+
+<script src="index.js"></script>
 </body>
 </html>
