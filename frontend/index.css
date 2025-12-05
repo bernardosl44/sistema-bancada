@@ -21,25 +21,30 @@ html, body {
     padding: 10px 20px;
     background: #222;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     color: #920c0c;
     cursor: pointer;
     font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
 
 .aba:hover, .aba.ativa {
     background: linear-gradient(45deg, #920c0c, #550707);
     color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
 
 /* CONTEÚDOS */
 .conteudo-aba {
-    padding: 20px;
+    padding: 25px;
     width: 95%;
     max-width: 1500px;
     margin: 20px auto;
     background: #111;
     border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
 .hidden { display: none; }
@@ -50,12 +55,44 @@ html, body {
     flex-direction: column;
     max-width: 400px;
     margin: 0 auto;
-    gap: 10px;
+    gap: 12px;
 }
 
-#loginForm input {
+#loginForm input, #loginForm select {
     padding: 10px;
     font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #222;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#loginForm input:focus, #loginForm select:focus {
+    border-color: #920c0c;
+    outline: none;
+}
+
+/* Olhinho de senha */
+.senha-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#toggleSenha {
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    background: #920c0c;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#toggleSenha:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
 }
 
 /* FORMULÁRIOS CADASTROS E PEDIDOS */
@@ -74,6 +111,12 @@ form input, form select {
     border: 1px solid #555;
     background: #222;
     color: #fff;
+    transition: all 0.3s ease;
+}
+
+form input:focus, form select:focus {
+    border-color: #920c0c;
+    outline: none;
 }
 
 form button {
@@ -84,10 +127,13 @@ form button {
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
 form button:hover {
-    background:#920c0c;
+    background: #b71c1c;
+    transform: scale(1.05);
 }
 
 /* LISTAS */
@@ -95,6 +141,59 @@ ul {
     list-style: none;
     padding: 0;
     margin-top: 10px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    background: #222;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    background: #333;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+button.edit-btn, button.delete-btn, button.reset-btn {
+    margin-left: 5px;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+button.edit-btn { background: #1976d2; }
+button.edit-btn:hover { background: #1565c0; }
+
+button.delete-btn { background: #d32f2f; }
+button.delete-btn:hover { background: #b71c1c; }
+
+button.reset-btn { background: #388e3c; }
+button.reset-btn:hover { background: #2e7d32; }
+
+/* FILTRO CADASTRO */
+.filtro-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.filtro-container input, .filtro-container select {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background: #222;
+    color: #fff;
 }
 
 /* DASHBOARD - GALERIA */
@@ -108,15 +207,17 @@ ul {
 .quadrado {
     background: #333;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
     flex: 1 1 300px;
     max-width: 350px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
-.nome-img {
-    margin-bottom: 10px;
-    font-size: 18px;
+.quadrado:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.6);
 }
 
 /* IMAGENS DASHBOARD */
@@ -125,6 +226,7 @@ ul {
     height: 350px;
     object-fit: contain;
     margin-bottom: 10px;
+    border-radius: 8px;
 }
 
 /* BOLINHAS ESTOQUE */
@@ -147,13 +249,19 @@ ul {
     background: grey;
     border-radius: 50%;
     border: 2px solid #fff;
+    transition: all 0.3s ease;
 }
 
 /* AMBIENTE (Temperatura/Umidade) */
 .ambiente {
     margin-top: 10px;
     font-size: 14px;
+    color: #ccc;
 }
+
+/* DIFERENCIAR ALUNO/PROFESSOR */
+li.aluno { background: #1976d2; }
+li.professor { background: #d32f2f; }
 
 /* AJUSTE DE RESPONSIVIDADE */
 @media (max-width: 800px) {

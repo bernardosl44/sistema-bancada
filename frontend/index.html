@@ -11,10 +11,21 @@
 <section id="loginSection">
     <h1 style="text-align:center;">Login</h1>
     <form id="loginForm">
+        <label for="tipoLogin">Tipo de Acesso:</label>
+        <select id="tipoLogin" required>
+            <option value="Aluno">Aluno</option>
+            <option value="Professor">Professor</option>
+        </select>
+
         <label for="loginUsuario">Usuário:</label>
         <input type="text" id="loginUsuario" required>
+
         <label for="loginSenha">Senha:</label>
-        <input type="password" id="loginSenha" required>
+        <div class="senha-wrapper">
+            <input type="password" id="loginSenha" required>
+            <button type="button" id="toggleSenha">👁</button>
+        </div>
+
         <button type="submit">Entrar</button>
     </form>
 </section>
@@ -30,10 +41,9 @@
 <section id="dashboard" class="conteudo-aba hidden">
     <h1 style="text-align:center;">Dashboard</h1>
     <div class="galeria">
-        <!-- Bancada Estoque -->
         <div class="quadrado">
             <div class="nome-img">Bancada Estoque</div>
-            <img src="bancada_estoque.png">
+            <img src="bancada_estoque.png" alt="Bancada Estoque">
             <div class="estoque-peças">
                 <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
                 <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
@@ -44,24 +54,21 @@
             <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
         </div>
 
-        <!-- Bancada Processo -->
         <div class="quadrado">
             <div class="nome-img">Bancada Processo</div>
-            <img src="bancada_processo.png">
+            <img src="bancada_processo.png" alt="Bancada Processo">
             <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
         </div>
 
-        <!-- Bancada Montagem -->
         <div class="quadrado">
             <div class="nome-img">Bancada Montagem</div>
-            <img src="bancada_montagem (1).png">
+            <img src="bancada_montagem (1).png" alt="Bancada Montagem">
             <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
         </div>
 
-        <!-- Bancada Expedição -->
         <div class="quadrado">
             <div class="nome-img">Bancada Expedição</div>
-            <img src="bancada_expedicao.png">
+            <img src="bancada_expedicao.png" alt="Bancada Expedição">
             <div class="estoque-peças">
                 <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
                 <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
@@ -79,9 +86,9 @@
         <label for="cadNome">Nome:</label>
         <input type="text" id="cadNome" required>
         <label for="cadSobrenome">Sobrenome:</label>
-        <input type="text" id="cadSobrenome" required>
+        <input type="text" id="cadSobrenome">
         <label for="cadNascimento">Data de Nascimento:</label>
-        <input type="date" id="cadNascimento" required>
+        <input type="date" id="cadNascimento">
         <label for="cadTipo">Tipo de Usuário:</label>
         <select id="cadTipo">
             <option>Aluno</option>
@@ -91,6 +98,8 @@
         <input type="text" id="cadUsuario" required>
         <label for="cadSenha">Senha:</label>
         <input type="password" id="cadSenha" required>
+        <label for="cadEmail">Email:</label>
+        <input type="email" id="cadEmail">
         <button type="submit">Registrar</button>
     </form>
     <ul id="cadastroList"></ul>
