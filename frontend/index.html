@@ -8,7 +8,7 @@
 <body>
 
 <!-- LOGIN -->
-<section id="loginSection">
+<div id="loginBox">
     <h1 style="text-align:center;">Login</h1>
     <form id="loginForm">
         <label for="tipoLogin">Tipo de Acesso:</label>
@@ -26,9 +26,28 @@
             <button type="button" id="toggleSenha">👁</button>
         </div>
 
-        <button type="submit">Entrar</button>
+        <button type="submit" class="btn-acao btn-vermelho">Entrar</button>
+        <button type="button" id="btnCadastrar" class="btn-acao btn-vermelho">Cadastrar-se</button>
     </form>
-</section>
+</div>
+
+<!-- CADASTRO INICIAL -->
+<div id="cadastroBox" class="hidden">
+    <h1 style="text-align:center;">Criar Conta</h1>
+    <form id="cadastroForm">
+        <label for="cadTipo">Tipo de Usuário:</label>
+        <select id="cadTipo">
+            <option>Aluno</option>
+            <option>Professor</option>
+        </select>
+        <label for="cadUsuario">Usuário:</label>
+        <input type="text" id="cadUsuario" required>
+        <label for="cadSenha">Senha:</label>
+        <input type="password" id="cadSenha" required>
+        <button type="submit" class="btn-acao btn-vermelho">Criar Conta</button>
+        <button type="button" id="btnVoltarLogin" class="btn-acao btn-vermelho">Voltar ao Login</button>
+    </form>
+</div>
 
 <!-- ABAS -->
 <nav class="abas hidden">
@@ -41,40 +60,25 @@
 <section id="dashboard" class="conteudo-aba hidden">
     <h1 style="text-align:center;">Dashboard</h1>
     <div class="galeria">
-        <div class="quadrado">
+        <div id="bancadaEstoque" class="quadrado">
             <div class="nome-img">Bancada Estoque</div>
             <img src="bancada_estoque.png" alt="Bancada Estoque">
-            <div class="estoque-peças">
-                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
-                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
-                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
-                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
-                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
-            </div>
-            <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
+            <div class="dados-bancada"></div>
         </div>
-
-        <div class="quadrado">
+        <div id="bancadaProcesso" class="quadrado">
             <div class="nome-img">Bancada Processo</div>
             <img src="bancada_processo.png" alt="Bancada Processo">
-            <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
+            <div class="dados-bancada"></div>
         </div>
-
-        <div class="quadrado">
+        <div id="bancadaMontagem" class="quadrado">
             <div class="nome-img">Bancada Montagem</div>
-            <img src="bancada_montagem (1).png" alt="Bancada Montagem">
-            <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
+            <img src="bancada_montagem.png" alt="Bancada Montagem">
+            <div class="dados-bancada"></div>
         </div>
-
-        <div class="quadrado">
+        <div id="bancadaExpedicao" class="quadrado">
             <div class="nome-img">Bancada Expedição</div>
             <img src="bancada_expedicao.png" alt="Bancada Expedição">
-            <div class="estoque-peças">
-                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
-                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
-                <div class="andar"><span class="bola"></span><span class="bola"></span><span class="bola"></span><span class="bola"></span></div>
-            </div>
-            <div class="ambiente">Temperatura: --°C | Umidade: --%</div>
+            <div class="dados-bancada"></div>
         </div>
     </div>
 </section>
@@ -82,25 +86,25 @@
 <!-- CADASTROS -->
 <section id="cadastros" class="conteudo-aba hidden">
     <h1 style="text-align:center;">Cadastros</h1>
-    <form id="cadastroForm">
+    <form id="cadastroCompletoForm">
         <label for="cadNome">Nome:</label>
         <input type="text" id="cadNome" required>
         <label for="cadSobrenome">Sobrenome:</label>
         <input type="text" id="cadSobrenome">
         <label for="cadNascimento">Data de Nascimento:</label>
         <input type="date" id="cadNascimento">
-        <label for="cadTipo">Tipo de Usuário:</label>
-        <select id="cadTipo">
+        <label for="cadTipoCompleto">Tipo de Usuário:</label>
+        <select id="cadTipoCompleto">
             <option>Aluno</option>
             <option>Professor</option>
         </select>
-        <label for="cadUsuario">Usuário:</label>
-        <input type="text" id="cadUsuario" required>
-        <label for="cadSenha">Senha:</label>
-        <input type="password" id="cadSenha" required>
+        <label for="cadUsuarioCompleto">Usuário:</label>
+        <input type="text" id="cadUsuarioCompleto" required>
+        <label for="cadSenhaCompleto">Senha:</label>
+        <input type="password" id="cadSenhaCompleto" required>
         <label for="cadEmail">Email:</label>
         <input type="email" id="cadEmail">
-        <button type="submit">Registrar</button>
+        <button type="submit" class="btn-acao btn-vermelho">Registrar</button>
     </form>
     <ul id="cadastroList"></ul>
 </section>
@@ -127,11 +131,12 @@
         <select id="pedidoDireita">
             <option>Preto</option><option>Branco</option><option>Verde</option><option>Amarelo</option><option>Azul</option>
         </select>
-        <button type="submit">Criar Pedido</button>
+        <button type="submit" class="btn-acao btn-vermelho">Criar Pedido</button>
     </form>
     <ul id="pedidosList"></ul>
 </section>
 
 <script src="index.js"></script>
+<script src="bancada.js"></script>
 </body>
 </html>
