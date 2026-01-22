@@ -40,10 +40,16 @@
             <option>Aluno</option>
             <option>Professor</option>
         </select>
+
         <label for="cadUsuario">Usuário:</label>
         <input type="text" id="cadUsuario" required>
+
         <label for="cadSenha">Senha:</label>
-        <input type="password" id="cadSenha" required>
+        <div class="senha-wrapper">
+            <input type="password" id="cadSenha" required>
+            <button type="button" id="toggleSenhaCadastro">👁</button>
+        </div>
+
         <button type="submit" class="btn-acao btn-vermelho">Criar Conta</button>
         <button type="button" id="btnVoltarLogin" class="btn-acao btn-vermelho">Voltar ao Login</button>
     </form>
@@ -101,7 +107,7 @@
         <label for="cadUsuarioCompleto">Usuário:</label>
         <input type="text" id="cadUsuarioCompleto" required>
         <label for="cadSenhaCompleto">Senha:</label>
-        <input type="password" id="cadSenhaCompleto" required>
+        <input type="text" id="cadSenhaCompleto" required>
         <label for="cadEmail">Email:</label>
         <input type="email" id="cadEmail">
         <button type="submit" class="btn-acao btn-vermelho">Registrar</button>

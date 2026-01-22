@@ -62,13 +62,17 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* OLHINHO DE SENHA */
+/* OLHINHO DE SENHA - LOGIN E CADASTRO */
 .senha-wrapper {
     display: flex;
     align-items: center;
 }
 
-#toggleSenha {
+.senha-wrapper input {
+    flex: 1;
+}
+
+.senha-wrapper button {
     margin-left: 5px;
     padding: 5px 10px;
     cursor: pointer;
@@ -78,7 +82,7 @@ input:focus, select:focus {
     border-radius: 5px;
 }
 
-#toggleSenha:hover {
+.senha-wrapper button:hover {
     background: #b71c1c;
 }
 
@@ -112,7 +116,7 @@ input:focus, select:focus {
 .conteudo-aba {
     padding: 25px;
     width: 95%;
-    max-width: 1500px;
+    max-width: 1800px;
     margin: 20px auto;
     background: #111;
     border-radius: 20px;
@@ -167,32 +171,27 @@ li:hover {
     background: #333;
 }
 
-/* DIFERENCIAR ALUNO/PROFESSOR */
 li.aluno { background: #1976d2; }
 li.professor { background: #d32f2f; }
 
 /* DASHBOARD - GALERIA */
 .galeria {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
 }
 
 .quadrado {
     background: #333;
-    padding: 15px;
+    padding: 10px;
     border-radius: 12px;
     text-align: center;
-    flex: 1 1 300px;
-    max-width: 350px;
-    transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 .quadrado img {
     width: 100%;
-    height: 250px;
+    height: 420px;
     object-fit: contain;
     margin-bottom: 10px;
     border-radius: 8px;
@@ -204,10 +203,15 @@ li.professor { background: #d32f2f; }
     color: #ccc;
 }
 
-/* AJUSTE DE RESPONSIVIDADE */
-@media (max-width: 800px) {
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
     .galeria {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .galeria {
+        grid-template-columns: 1fr;
     }
 }

@@ -1,7 +1,7 @@
 // ----------------------
 // USUÁRIOS
 // ----------------------
-let usuarios = []; // contas criadas
+let usuarios = [];
 
 // ----------------------
 // LOGIN
@@ -12,7 +12,7 @@ const cadastroBox = document.getElementById('cadastroBox');
 const abasNav = document.querySelector('.abas');
 const conteudos = document.querySelectorAll('.conteudo-aba');
 
-// Olhinho de senha
+// Olhinho login
 const senhaInput = document.getElementById('loginSenha');
 const toggleSenhaBtn = document.getElementById('toggleSenha');
 toggleSenhaBtn.addEventListener('click', () => {
@@ -31,19 +31,19 @@ loginForm.addEventListener('submit', (e) => {
         loginBox.classList.add('hidden');
         abasNav.classList.remove('hidden');
         document.getElementById('dashboard').classList.remove('hidden');
-        renderUsuarios(); // atualizar lista na aba cadastros
+        renderUsuarios();
     } else {
         alert('Usuário ou senha incorretos!');
     }
 });
 
-// Botão "Cadastrar-se" na tela de login
+// Botão "Cadastrar-se"
 document.getElementById('btnCadastrar').addEventListener('click', () => {
     loginBox.classList.add('hidden');
     cadastroBox.classList.remove('hidden');
 });
 
-// Voltar ao login do cadastro
+// Voltar ao login
 document.getElementById('btnVoltarLogin').addEventListener('click', () => {
     cadastroBox.classList.add('hidden');
     loginBox.classList.remove('hidden');
@@ -66,6 +66,13 @@ abas.forEach(botao => {
 // CADASTRO INICIAL
 // ----------------------
 const cadastroForm = document.getElementById('cadastroForm');
+const cadSenhaInput = document.getElementById('cadSenha');
+const toggleSenhaCadastroBtn = document.getElementById('toggleSenhaCadastro');
+
+toggleSenhaCadastroBtn.addEventListener('click', () => {
+    cadSenhaInput.type = cadSenhaInput.type === 'password' ? 'text' : 'password';
+});
+
 cadastroForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const tipo = document.getElementById('cadTipo').value;
@@ -83,7 +90,7 @@ cadastroForm.addEventListener('submit', (e) => {
 });
 
 // ----------------------
-// CADASTRO COMPLETO (ABA CADASTROS)
+// CADASTRO COMPLETO
 // ----------------------
 const cadastroCompletoForm = document.getElementById('cadastroCompletoForm');
 const cadastroList = document.getElementById('cadastroList');
@@ -106,7 +113,6 @@ cadastroCompletoForm.addEventListener('submit', (e) => {
     cadastroCompletoForm.reset();
 });
 
-// Renderizar lista de usuários na aba cadastros
 function renderUsuarios() {
     cadastroList.innerHTML = '';
     usuarios.forEach(u => {
