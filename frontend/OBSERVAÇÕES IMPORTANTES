@@ -1,2 +1,13 @@
 <!-- Estoque 5 Andares com 6 e o ultimo andar é 4 -->
- <!-- Expedição 3 Andares 4 cada -->
+<!-- Expedição 3 Andares 4 cada -->
+
+<!--IP Broker: 10.77.241.65
+
+Variedades Ambientais
+
+humi - umidade (%)
+<ai00 - algum sensor analógico
+vrms - tensão no sistema (V)
+irms - corrente no sistema (A)
+appp - potência aparente (VA)
+actp - Potência ativa

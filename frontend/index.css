@@ -62,7 +62,7 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* OLHINHO DE SENHA - LOGIN E CADASTRO */
+/* OLHINHO DE SENHA */
 .senha-wrapper {
     display: flex;
     align-items: center;
@@ -157,9 +157,6 @@ ul {
 }
 
 li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 6px 10px;
     background: #222;
     border-radius: 5px;
@@ -170,9 +167,6 @@ li {
 li:hover {
     background: #333;
 }
-
-li.aluno { background: #1976d2; }
-li.professor { background: #d32f2f; }
 
 /* DASHBOARD - GALERIA */
 .galeria {
@@ -197,10 +191,35 @@ li.professor { background: #d32f2f; }
     border-radius: 8px;
 }
 
+/* DADOS BANCADA - EMBAIXO DA IMAGEM */
 .dados-bancada {
     text-align: left;
     font-size: 14px;
     color: #ccc;
+    margin-top: 8px;
+}
+
+/* BOLINHAS ESTOQUE */
+.bolinhas-estoque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+    gap: 5px;
+}
+
+.bolinhas-estoque .andar {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.bolinhas-estoque .bolinha {
+    width: 20px;
+    height: 20px;
+    background-color: #920c0c;
+    border-radius: 50%;
+    border: 1px solid #fff;
 }
 
 /* RESPONSIVIDADE */
