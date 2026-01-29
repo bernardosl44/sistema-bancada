@@ -1,206 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<title>Sistema de Bancada</title>
-<link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <title>Sistema de Bancada</title>
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
 
-<!-- LOGIN -->
-<div id="loginBox">
-    <h1 style="text-align:center;">Login</h1>
-    <form id="loginForm">
-        <label for="loginUsuario">Usuário:</label>
-        <input type="text" id="loginUsuario" required>
+    <!-- LOGIN -->
+    <div id="loginBox">
+        <h1 style="text-align:center;">Login</h1>
+        <form id="loginForm">
+            <label for="loginUsuario">Usuário:</label>
+            <input type="text" id="loginUsuario" required>
 
-        <label for="loginSenha">Senha:</label>
-        <div class="senha-wrapper">
-            <input type="password" id="loginSenha" required>
-            <button type="button" id="toggleSenha">👁</button>
-        </div>
-
-        <button type="submit" class="btn-acao btn-vermelho">Entrar</button>
-        <button type="button" id="btnCadastrar" class="btn-acao btn-vermelho">Cadastrar-se</button>
-    </form>
-</div>
-
-<!-- CADASTRO INICIAL -->
-<div id="cadastroBox" class="hidden">
-    <h1 style="text-align:center;">Criar Conta</h1>
-    <form id="cadastroForm">
-        <label for="cadNome">Nome:</label>
-        <input type="text" id="cadNome" required>
-
-        <label for="cadSobrenome">Sobrenome:</label>
-        <input type="text" id="cadSobrenome">
-
-        <label for="cadNascimento">Data de Nascimento:</label>
-        <input type="date" id="cadNascimento">
-
-        <label for="cadUsuario">Usuário:</label>
-        <input type="text" id="cadUsuario" required>
-
-        <label for="cadSenha">Senha:</label>
-        <div class="senha-wrapper">
-            <input type="password" id="cadSenha" required>
-            <button type="button" id="toggleSenhaCadastro">👁</button>
-        </div>
-
-        <label for="cadEmail">Email:</label>
-        <input type="email" id="cadEmail">
-
-        <button type="submit" class="btn-acao btn-vermelho">Criar Conta</button>
-        <button type="button" id="btnVoltarLogin" class="btn-acao btn-vermelho">Voltar ao Login</button>
-    </form>
-</div>
-
-<!-- ABAS -->
-<div style="position: relative;">
-    <nav class="abas hidden">
-        <button class="aba ativa" data-target="dashboard">Dashboard</button>
-        <button class="aba" data-target="cadastros">Cadastros</button>
-        <button class="aba" data-target="pedidos">Pedidos</button>
-    </nav>
-    <button id="btnSair" class="btn-acao btn-vermelho" style="position:absolute; top:10px; right:10px; width:auto; padding:8px 15px; display:none;">Sair</button>
-</div>
-
-<!-- DASHBOARD -->
-<section id="dashboard" class="conteudo-aba hidden">
-    <h1 style="text-align:center;">Dashboard</h1>
-    <div class="galeria">
-        <div class="quadrado">
-            <div class="nome-img">Bancada Estoque</div>
-            <img src="bancada_estoque.png" alt="Bancada Estoque">
-            <div id="dados-estoque" class="dados-bancada"></div>
-            <div class="bolinhas-estoque">
-                <div class="andar">
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                </div>
-                <div class="andar">
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                </div>
-                <div class="andar">
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                </div>
-                <div class="andar">
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                </div>
-                <div class="andar">
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                    <div class="bolinha"></div>
-                </div>
+            <label for="loginSenha">Senha:</label>
+            <div class="senha-wrapper">
+                <input type="password" id="loginSenha" required>
+                <button type="button" id="toggleSenha">👁</button>
             </div>
-        </div>
-        <div class="quadrado">
-            <div class="nome-img">Bancada Processo</div>
-            <img src="bancada_processo.png" alt="Bancada Processo">
-            <div id="dados-processo" class="dados-bancada"></div>
-        </div>
-        <div class="quadrado">
-            <div class="nome-img">Bancada Montagem</div>
-            <img src="bancada_montagem.png" alt="Bancada Montagem">
-            <div id="dados-montagem" class="dados-bancada"></div>
-        </div>
-        <div class="quadrado">
-            <div class="nome-img">Bancada Expedição</div>
-            <img src="bancada_expedicao.png" alt="Bancada Expedição">
-            <div id="dados-expedicao" class="dados-bancada"></div>
-        </div>
+
+            <button type="submit" class="btn-acao btn-vermelho">Entrar</button>
+            <button type="button" id="btnCadastrar" class="btn-acao btn-vermelho">Cadastrar-se</button>
+        </form>
     </div>
-</section>
 
-<!-- CADASTROS -->
-<section id="cadastros" class="conteudo-aba hidden">
-    <h1 style="text-align:center;">Cadastros</h1>
-    <form id="cadastroCompletoForm">
-        <label for="cadNomeCompleto">Nome:</label>
-        <input type="text" id="cadNomeCompleto" required>
+    <!-- CADASTRO INICIAL -->
+    <div id="cadastroBox" class="hidden">
+        <h1 style="text-align:center;">Criar Conta</h1>
+        <form id="cadastroForm">
+            <label for="cadNome">Nome:</label>
+            <input type="text" id="cadNome" required>
 
-        <label for="cadSobrenomeCompleto">Sobrenome:</label>
-        <input type="text" id="cadSobrenomeCompleto">
+            <label for="cadSobrenome">Sobrenome:</label>
+            <input type="text" id="cadSobrenome">
 
-        <label for="cadNascimentoCompleto">Data de Nascimento:</label>
-        <input type="date" id="cadNascimentoCompleto">
+            <label for="cadNascimento">Data de Nascimento:</label>
+            <input type="date" id="cadNascimento">
 
-        <label for="cadUsuarioCompleto">Usuário:</label>
-        <input type="text" id="cadUsuarioCompleto" required>
+            <label for="cadUsuario">Usuário:</label>
+            <input type="text" id="cadUsuario" required>
 
-        <label for="cadSenhaCompleto">Senha:</label>
-        <input type="text" id="cadSenhaCompleto" required>
+            <label for="cadSenha">Senha:</label>
+            <div class="senha-wrapper">
+                <input type="password" id="cadSenha" required>
+                <button type="button" id="toggleSenhaCadastro">👁</button>
+            </div>
 
-        <label for="cadEmailCompleto">Email:</label>
-        <input type="email" id="cadEmailCompleto">
+            <label for="cadEmail">Email:</label>
+            <input type="email" id="cadEmail">
 
-        <button type="submit" class="btn-acao btn-vermelho">Registrar</button>
-    </form>
+            <button type="submit" class="btn-acao btn-vermelho">Criar Conta</button>
+            <button type="button" id="btnVoltarLogin" class="btn-acao btn-vermelho">Voltar ao Login</button>
+        </form>
+    </div>
 
-    <button id="btnMostrarCadastros" class="btn-acao btn-vermelho">Mostrar/Esconder Cadastros</button>
-    <input type="text" id="buscarUsuario" placeholder="Pesquisar usuário..." style="margin-top:10px; padding:8px; font-size:16px; width:100%; max-width:400px; display:none;">
 
-    <ul id="cadastroList" style="margin-top:10px; display:none;"></ul>
-</section>
-
-<!-- PEDIDOS -->
-<section id="pedidos" class="conteudo-aba hidden">
-    <h1 style="text-align:center;">Pedidos</h1>
-    <form id="pedidosForm">
-        <label for="pedidoNome">Nome do Pedido:</label>
-        <input type="text" id="pedidoNome" required>
-
-        <label for="pedidoBase">Cor da Base:</label>
-        <select id="pedidoBase">
-            <option>Preto</option><option>Branco</option><option>Verde</option>
-            <option>Amarelo</option><option>Azul</option>
-        </select>
-
-        <label for="pedidoFrente">Cor da Frente:</label>
-        <select id="pedidoFrente">
-            <option>Preto</option><option>Branco</option><option>Verde</option>
-            <option>Amarelo</option><option>Azul</option>
-        </select>
-
-        <label for="pedidoEsquerda">Cor da Esquerda:</label>
-        <select id="pedidoEsquerda">
-            <option>Preto</option><option>Branco</option><option>Verde</option>
-            <option>Amarelo</option><option>Azul</option>
-        </select>
-
-        <label for="pedidoDireita">Cor da Direita:</label>
-        <select id="pedidoDireita">
-            <option>Preto</option><option>Branco</option><option>Verde</option>
-            <option>Amarelo</option><option>Azul</option>
-        </select>
-
-        <button type="submit" class="btn-acao btn-vermelho">Criar Pedido</button>
-    </form>
-
-    <ul id="pedidosList"></ul>
-</section>
-
-<script src="index.js"></script>
-<script src="bancada.js"></script>
+    <script src="index.js"></script>
+    <script src="bancada.js"></script>
 </body>
+
 </html>

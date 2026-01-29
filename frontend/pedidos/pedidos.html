@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Bancada</title>
+    <link rel="stylesheet" href="bancada.css">
+</head>
+
+<body>
+
+<!-- PEDIDOS -->
+<section id="pedidos" class="conteudo-aba">
+    <h1 style="text-align:center;">Pedidos</h1>
+    <form id="pedidosForm">
+        <label for="pedidoNome">Nome do Pedido:</label>
+        <input type="text" id="pedidoNome" required>
+
+        <label for="pedidoBase">Cor da Base:</label>
+        <select id="pedidoBase">
+            <option>Preto</option>
+            <option>Branco</option>
+            <option>Verde</option>
+            <option>Amarelo</option>
+            <option>Azul</option>
+        </select>
+
+        <label for="pedidoFrente">Cor da Frente:</label>
+        <select id="pedidoFrente">
+            <option>Preto</option>
+            <option>Branco</option>
+            <option>Verde</option>
+            <option>Amarelo</option>
+            <option>Azul</option>
+        </select>
+
+        <label for="pedidoEsquerda">Cor da Esquerda:</label>
+        <select id="pedidoEsquerda">
+            <option>Preto</option>
+            <option>Branco</option>
+            <option>Verde</option>
+            <option>Amarelo</option>
+            <option>Azul</option>
+        </select>
+
+        <label for="pedidoDireita">Cor da Direita:</label>
+        <select id="pedidoDireita">
+            <option>Preto</option>
+            <option>Branco</option>
+            <option>Verde</option>
+            <option>Amarelo</option>
+            <option>Azul</option>
+        </select>
+
+        <button type="submit" class="btn-acao btn-vermelho">Criar Pedido</button>
+    </form>
+
+    <ul id="pedidosList"></ul>
+</section>
+</body>
+</html>
