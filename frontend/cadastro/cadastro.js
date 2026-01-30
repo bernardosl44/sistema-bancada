@@ -1,94 +1,13 @@
 let usuarios = [];
 
-const loginForm = document.getElementById('loginForm');
-const loginBox = document.getElementById('loginBox');
-const cadastroBox = document.getElementById('cadastroBox');
-const abasNav = document.querySelector('.abas');
-const conteudos = document.querySelectorAll('.conteudo-aba');
+const cadastroCompletoForm = document.getElementById('cadastroCompletoForm');
+const cadastroList = document.getElementById('cadastroList');
+const buscarUsuario = document.getElementById('buscarUsuario');
+const btnMostrarCadastros = document.getElementById('btnMostrarCadastros');
 
-const senhaInput = document.getElementById('loginSenha');
-document.getElementById('toggleSenha').onclick = () => {
-    senhaInput.type = senhaInput.type === 'password' ? 'text' : 'password';
-};
+let cadastrosVisiveis = false;
 
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const usuario = loginUsuario.value;
-    const senha = loginSenha.value;
-    
-
-    fetch("http://localhost:1881/autenticacao/autenticar",{
-        method:"POST",
-        body:JSON.stringify({usuario,senha})
-    }).then((resposta)=>{
-        console.log(resposta)
-        if(resposta.ok){
-            resposta.json()
-        }
-    }).then((usuario)=>{
-        window.location.href = "bancada/bancada.html";
-    })
-
-
-});
-
-btnCadastrar.onclick = () => {
-    loginBox.classList.add('hidden');
-    cadastroBox.classList.remove('hidden');
-};
-
-btnVoltarLogin.onclick = () => {
-    cadastroBox.classList.add('hidden');
-    loginBox.classList.remove('hidden');
-};
-
-const cadSenha = document.getElementById('cadSenha');
-document.getElementById('toggleSenhaCadastro').onclick = () => {
-    cadSenha.type = cadSenha.type === 'password' ? 'text' : 'password';
-};
-
-cadastroForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (usuarios.find(u => u.usuario === cadUsuario.value))
-        return alert('Usuário já existe');
-    usuarios.push({
-        nome: cadNome.value,
-        sobrenome: cadSobrenome.value,
-        nascimento: cadNascimento.value,
-        usuario: cadUsuario.value,
-        senha: cadSenha.value,
-        email: cadEmail.value
-    });
-    cadastroForm.reset();
-    cadastroBox.classList.add('hidden');
-    loginBox.classList.remove('hidden');
-});
-
-document.querySelectorAll('.aba').forEach(aba => {
-    aba.onclick = () => {
-        document.querySelectorAll('.aba').forEach(b => b.classList.remove('ativa'));
-        conteudos.forEach(c => c.classList.add('hidden'));
-        aba.classList.add('ativa');
-        document.getElementById(aba.dataset.target).classList.remove('hidden');
-    };
-});
-
-cadastroCompletoForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (usuarios.find(u => u.usuario === cadUsuarioCompleto.value))
-        return alert('Usuário já existe');
-    usuarios.push({
-        nome: cadNomeCompleto.value,
-        sobrenome: cadSobrenomeCompleto.value,
-        nascimento: cadNascimentoCompleto.value,
-        usuario: cadUsuarioCompleto.value,
-        senha: cadSenhaCompleto.value,
-        email: cadEmailCompleto.value
-    });
-    cadastroCompletoForm.reset();
-    renderUsuarios();
-});
-
+// Renderiza usuários na lista
 function renderUsuarios(filter='') {
     cadastroList.innerHTML = '';
     const filtrados = usuarios.filter(u => u.nome.toLowerCase().includes(filter.toLowerCase()));
@@ -98,17 +17,41 @@ function renderUsuarios(filter='') {
         cadastroList.appendChild(li);
         return;
     }
-    filtrados.forEach(u => {
+    filtrados.forEach((u, i) => {
         const li = document.createElement('li');
-        li.innerHTML = `Usuário: ${u.usuario} <br> Senha: ${u.senha} <br> Nome: ${u.nome} ${u.sobrenome} <br> Nascimento: ${u.nascimento} <br> Email: ${u.email}`;
+        li.innerHTML = `
+            Usuário: ${u.usuario} <br> 
+            Senha: ${u.senha} <br> 
+            Nome: ${u.nome} ${u.sobrenome} <br> 
+            Nascimento: ${u.nascimento} <br> 
+            Email: ${u.email} 
+            <button class="editar">Editar</button> 
+            <button class="excluir">Excluir</button>
+        `;
+        // Botões só comunicam
+        li.querySelector('.editar').onclick = () => {
+            fetch('http://localhost:1881/cadastros/editar', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(u)
+            }).then(res => {
+                if(res.ok) alert('Usuário enviado para Node-RED (editar)');
+            });
+        };
+        li.querySelector('.excluir').onclick = () => {
+            fetch('http://localhost:1881/cadastros/excluir', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(u)
+            }).then(res => {
+                if(res.ok) alert('Usuário enviado para Node-RED (excluir)');
+            });
+        };
         cadastroList.appendChild(li);
     });
 }
 
-const btnMostrarCadastros = document.getElementById('btnMostrarCadastros');
-const buscarUsuario = document.getElementById('buscarUsuario');
-let cadastrosVisiveis = false;
-
+// Mostrar / esconder lista
 btnMostrarCadastros.onclick = () => {
     cadastrosVisiveis = !cadastrosVisiveis;
     cadastroList.style.display = cadastrosVisiveis ? 'block' : 'none';
@@ -116,42 +59,42 @@ btnMostrarCadastros.onclick = () => {
     if(cadastrosVisiveis) renderUsuarios();
 };
 
+// Filtro ao digitar
 buscarUsuario.oninput = () => {
     renderUsuarios(buscarUsuario.value);
 };
 
-const pedidos = [];
-
-pedidosForm.addEventListener('submit', (e) => {
+// CADASTRO NA ABA
+cadastroCompletoForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    pedidos.push({
-        nome: pedidoNome.value,
-        base: pedidoBase.value,
-        frente: pedidoFrente.value,
-        esquerda: pedidoEsquerda.value,
-        direita: pedidoDireita.value,
-        status: 'Em produção'
-    });
-    pedidosForm.reset();
-    renderPedidos();
+
+    const usuarioData = {
+        nome: document.getElementById('cadNomeCompleto').value,
+        sobrenome: document.getElementById('cadSobrenomeCompleto').value,
+        nascimento: document.getElementById('cadNascimentoCompleto').value,
+        usuario: document.getElementById('cadUsuarioCompleto').value,
+        senha: document.getElementById('cadSenhaCompleto').value,
+        email: document.getElementById('cadEmailCompleto').value
+    };
+
+    // Adiciona localmente se não existir
+    if(!usuarios.find(u => u.usuario === usuarioData.usuario)) {
+        usuarios.push(usuarioData);
+    }
+
+    renderUsuarios();
+    cadastroCompletoForm.reset();
+
+    // Envia para Node-RED
+    fetch('http://localhost:1881/cadastros/cadastros', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(usuarioData)
+    }).then(res => {
+        if(res.ok){
+            console.log('Cadastro enviado para Node-RED');
+        } else {
+            console.error('Erro ao enviar cadastro para Node-RED');
+        }
+    }).catch(err => console.error('Erro de conexão:', err));
 });
-
-function renderPedidos() {
-    pedidosList.innerHTML = '';
-    pedidos.forEach((p, i) => {
-        const li = document.createElement('li');
-        li.innerHTML = `${p.nome} | ${p.status} <button class="excluir">Excluir</button>`;
-        li.querySelector('.excluir').onclick = () => {
-            pedidos.splice(i, 1);
-            renderPedidos();
-        };
-        pedidosList.appendChild(li);
-    });
-}
-
-// BOTÃO SAIR
-btnSair.onclick = () => {
-    abasNav.classList.add('hidden');
-    conteudos.forEach(c => c.classList.add('hidden'));
-    loginBox.classList.remove('hidden');
-};

@@ -11,3 +11,13 @@ vrms - tensão no sistema (V)
 irms - corrente no sistema (A)
 appp - potência aparente (VA)
 actp - Potência ativa
+
+exemplo
+<a href="caminho/aqte/o/arquivo">Cadastro de usuario</a>
+
+humi - x
+<ai00 - x
+vrms - x
+irms - x
+appp - x
+actp - x

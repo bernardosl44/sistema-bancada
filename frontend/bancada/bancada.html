@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Bancada</title>
+    <title>Dashboard - Sistema de Bancada</title>
     <link rel="stylesheet" href="bancada.css">
 </head>
-
 <body>
+
+    <!-- ABAS -->
+    <div class="abas">
+        <a href="bancada.html" class="aba">Dashboard</a>
+        <a href="../pedidos/pedidos.html" class="aba">Pedidos</a>
+        <a href="../cadastro/cadastro.html" class="aba">Cadastros</a>
+    </div>
 
     <!-- DASHBOARD -->
     <section id="dashboard" class="conteudo-aba">
@@ -16,67 +21,66 @@
             <div class="quadrado">
                 <div class="nome-img">Bancada Estoque</div>
                 <img src="../bancada_estoque.png" alt="Bancada Estoque">
-                <div id="dados-estoque" class="dados-bancada"></div>
-                <div class="bolinhas-estoque">
-                    <div class="andar">
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                    </div>
-                    <div class="andar">
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                    </div>
-                    <div class="andar">
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                    </div>
-                    <div class="andar">
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                    </div>
-                    <div class="andar">
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                        <div class="bolinha"></div>
-                    </div>
+                <div id="dados-estoque" class="dados-bancada">
+                    <div>humi - x</div>
+                    <div>ai00 - x</div>
+                    <div>vrms - x</div>
+                    <div>irms - x</div>
+                    <div>appp - x</div>
+                    <div>actp - x</div>
                 </div>
             </div>
+
             <div class="quadrado">
                 <div class="nome-img">Bancada Processo</div>
                 <img src="../bancada_processo.png" alt="Bancada Processo">
-                <div id="dados-processo" class="dados-bancada"></div>
+                <div id="dados-processo" class="dados-bancada">
+                    <div>humi - x</div>
+                    <div>ai00 - x</div>
+                    <div>vrms - x</div>
+                    <div>irms - x</div>
+                    <div>appp - x</div>
+                    <div>actp - x</div>
+                </div>
             </div>
+
             <div class="quadrado">
                 <div class="nome-img">Bancada Montagem</div>
                 <img src="../bancada_montagem.png" alt="Bancada Montagem">
-                <div id="dados-montagem" class="dados-bancada"></div>
+                <div id="dados-montagem" class="dados-bancada">
+                    <div>humi - x</div>
+                    <div>ai00 - x</div>
+                    <div>vrms - x</div>
+                    <div>irms - x</div>
+                    <div>appp - x</div>
+                    <div>actp - x</div>
+                </div>
             </div>
+
             <div class="quadrado">
                 <div class="nome-img">Bancada Expedição</div>
                 <img src="../bancada_expedicao.png" alt="Bancada Expedição">
-                <div id="dados-expedicao" class="dados-bancada"></div>
+                <div id="dados-expedicao" class="dados-bancada">
+                    <div>humi - x</div>
+                    <div>ai00 - x</div>
+                    <div>vrms - x</div>
+                    <div>irms - x</div>
+                    <div>appp - x</div>
+                    <div>actp - x</div>
+                </div>
             </div>
         </div>
     </section>
 
-<script src="bancada.js"></script>
+    <!-- BOTÃO SAIR -->
+    <button id="btnSair" class="btn-acao btn-vermelho" style="position:fixed; bottom:20px; right:20px; width:120px;">Sair</button>
+    <script>
+        const btnSair = document.getElementById('btnSair');
+        btnSair.onclick = () => {
+            window.location.href = "../index.html";
+        };
+    </script>
 
+    <script src="bancada.js"></script>
 </body>
 </html>

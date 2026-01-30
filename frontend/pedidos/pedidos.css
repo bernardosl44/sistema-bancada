@@ -1,0 +1,236 @@
+/* GERAL */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #1b1b1b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* BOTÕES */
+.btn-acao {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-vermelho {
+    background: #920c0c;
+    color: #fff;
+}
+
+.btn-vermelho:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
+}
+
+/* LOGIN E CADASTRO INICIAL */
+#loginBox, #cadastroBox {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #111;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+#loginBox form, #cadastroBox form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* INPUTS */
+input, select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #222;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #920c0c;
+    outline: none;
+}
+
+/* OLHINHO DE SENHA */
+.senha-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.senha-wrapper input {
+    flex: 1;
+}
+
+.senha-wrapper button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    background: #920c0c;
+    color: white;
+    border-radius: 5px;
+}
+
+.senha-wrapper button:hover {
+    background: #b71c1c;
+}
+
+/* ABAS */
+.abas {
+    display: flex;
+    gap: 20px;
+    padding: 15px 30px;
+    background-color: #111;
+    border-bottom: 2px solid #920c0c;
+}
+
+.aba {
+    padding: 10px 20px;
+    background: #222;
+    border: none;
+    border-radius: 8px;
+    color: #920c0c;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.aba:hover, .aba.ativa {
+    background: linear-gradient(45deg, #920c0c, #550707);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* CONTEÚDO DAS ABAS */
+.conteudo-aba {
+    padding: 25px;
+    width: 95%;
+    max-width: 1800px;
+    margin: 20px auto;
+    background: #111;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+.hidden { display: none; }
+
+/* FORMULÁRIOS CADASTROS E PEDIDOS */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+    gap: 10px;
+}
+
+form input, form select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background: #222;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+form input:focus, form select:focus {
+    border-color: #920c0c;
+    outline: none;
+}
+
+/* LISTAS */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+li {
+    padding: 6px 10px;
+    background: #222;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    background: #333;
+}
+
+/* DASHBOARD - GALERIA */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.quadrado {
+    background: #333;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.quadrado img {
+    width: 100%;
+    height: 420px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* DADOS BANCADA - EMBAIXO DA IMAGEM */
+.dados-bancada {
+    text-align: left;
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 8px;
+}
+
+/* BOLINHAS ESTOQUE */
+.bolinhas-estoque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+    gap: 5px;
+}
+
+.bolinhas-estoque .andar {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.bolinhas-estoque .bolinha {
+    width: 20px;
+    height: 20px;
+    background-color: #920c0c;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1200px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+}

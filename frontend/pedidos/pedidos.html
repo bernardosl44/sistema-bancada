@@ -3,59 +3,96 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Bancada</title>
-    <link rel="stylesheet" href="bancada.css">
+    <title>Pedidos - Sistema de Bancada</title>
+    <link rel="stylesheet" href="pedidos.css">
+    <style>
+        #btnSair {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background-color: #920c0c;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        #btnSair:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- PEDIDOS -->
-<section id="pedidos" class="conteudo-aba">
-    <h1 style="text-align:center;">Pedidos</h1>
-    <form id="pedidosForm">
-        <label for="pedidoNome">Nome do Pedido:</label>
-        <input type="text" id="pedidoNome" required>
+    <!-- ABAS -->
+    <div class="abas">
+        <a href="../bancada/bancada.html" class="aba">Dashboard</a>
+        <a href="../pedidos/pedidos.html" class="aba">Pedidos</a>
+        <a href="../cadastro/cadastro.html" class="aba">Cadastros</a>
+    </div>
 
-        <label for="pedidoBase">Cor da Base:</label>
-        <select id="pedidoBase">
-            <option>Preto</option>
-            <option>Branco</option>
-            <option>Verde</option>
-            <option>Amarelo</option>
-            <option>Azul</option>
-        </select>
+    <!-- PEDIDOS -->
+    <section id="pedidos" class="conteudo-aba">
+        <h1 style="text-align:center;">Pedidos</h1>
+        <form id="pedidosForm">
+            <label for="pedidoNome">Nome do Pedido:</label>
+            <input type="text" id="pedidoNome" required>
 
-        <label for="pedidoFrente">Cor da Frente:</label>
-        <select id="pedidoFrente">
-            <option>Preto</option>
-            <option>Branco</option>
-            <option>Verde</option>
-            <option>Amarelo</option>
-            <option>Azul</option>
-        </select>
+            <label for="pedidoBase">Cor da Base:</label>
+            <select id="pedidoBase">
+                <option>Preto</option>
+                <option>Branco</option>
+                <option>Verde</option>
+                <option>Amarelo</option>
+                <option>Azul</option>
+            </select>
 
-        <label for="pedidoEsquerda">Cor da Esquerda:</label>
-        <select id="pedidoEsquerda">
-            <option>Preto</option>
-            <option>Branco</option>
-            <option>Verde</option>
-            <option>Amarelo</option>
-            <option>Azul</option>
-        </select>
+            <label for="pedidoFrente">Cor da Frente:</label>
+            <select id="pedidoFrente">
+                <option>Preto</option>
+                <option>Branco</option>
+                <option>Verde</option>
+                <option>Amarelo</option>
+                <option>Azul</option>
+            </select>
 
-        <label for="pedidoDireita">Cor da Direita:</label>
-        <select id="pedidoDireita">
-            <option>Preto</option>
-            <option>Branco</option>
-            <option>Verde</option>
-            <option>Amarelo</option>
-            <option>Azul</option>
-        </select>
+            <label for="pedidoEsquerda">Cor da Esquerda:</label>
+            <select id="pedidoEsquerda">
+                <option>Preto</option>
+                <option>Branco</option>
+                <option>Verde</option>
+                <option>Amarelo</option>
+                <option>Azul</option>
+            </select>
 
-        <button type="submit" class="btn-acao btn-vermelho">Criar Pedido</button>
-    </form>
+            <label for="pedidoDireita">Cor da Direita:</label>
+            <select id="pedidoDireita">
+                <option>Preto</option>
+                <option>Branco</option>
+                <option>Verde</option>
+                <option>Amarelo</option>
+                <option>Azul</option>
+            </select>
 
-    <ul id="pedidosList"></ul>
-</section>
+            <button type="submit" class="btn-acao btn-vermelho">Criar Pedido</button>
+        </form>
+
+        <ul id="pedidosList"></ul>
+    </section>
+
+    <!-- BOTÃO SAIR -->
+    <button id="btnSair">Sair</button>
+
+    <script src="pedidos.js"></script>
+    <script>
+        document.getElementById('btnSair').onclick = () => {
+            window.location.href = "../index.html";
+        };
+    </script>
 </body>
 </html>
