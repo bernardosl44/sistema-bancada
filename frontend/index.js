@@ -1,8 +1,11 @@
+// index.js
+
 let usuarios = [];
 
 const loginForm = document.getElementById('loginForm');
 const loginBox = document.getElementById('loginBox');
 const cadastroBox = document.getElementById('cadastroBox');
+const cadastroCompletoForm = document.getElementById('cadastroCompletoForm');
 
 const senhaInput = document.getElementById('loginSenha');
 document.getElementById('toggleSenha').onclick = () => {
@@ -15,7 +18,7 @@ loginForm.addEventListener('submit', (e) => {
     const usuario = loginUsuario.value;
     const senha = loginSenha.value;
 
-    fetch("http://localhost:1881/autenticacao/autenticar",{
+    fetch("http://localhost:1880/autenticacao/autenticar",{
         method:"POST",
         body:JSON.stringify({usuario,senha})
     }).then((resposta)=>{
@@ -57,7 +60,7 @@ cadastroForm.addEventListener('submit', (e) => {
         email: cadEmail.value
     };
 
-    fetch('http://localhost:1881/cadastrar', {
+    fetch('http://localhost:1880/cadastrar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(usuarioData)
@@ -94,7 +97,8 @@ cadastroCompletoForm.addEventListener('submit', (e) => {
     renderUsuarios(); // atualiza a lista visível
 
     // Envia para Node-RED
-    fetch("http://localhost:1881/cadastros/cadastros", {
+
+    fetch("http://localhost:1880/cadastros/cadastros", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(usuarioData)

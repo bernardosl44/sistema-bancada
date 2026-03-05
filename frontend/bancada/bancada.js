@@ -1,3 +1,5 @@
+// bancada.js
+
 window.onload = () => { polling(5); }
 
 function polling(segundos){

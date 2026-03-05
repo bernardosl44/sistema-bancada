@@ -1,3 +1,5 @@
+// cadastros.js
+
 let usuarios = [];
 
 const cadastroCompletoForm = document.getElementById('cadastroCompletoForm');
@@ -30,7 +32,7 @@ function renderUsuarios(filter='') {
         `;
         // Botões só comunicam
         li.querySelector('.editar').onclick = () => {
-            fetch('http://localhost:1881/cadastros/editar', {
+            fetch('http://localhost:1880/cadastros/editar', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(u)
@@ -39,7 +41,7 @@ function renderUsuarios(filter='') {
             });
         };
         li.querySelector('.excluir').onclick = () => {
-            fetch('http://localhost:1881/cadastros/excluir', {
+            fetch('http://localhost:1880/cadastros/excluir', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(u)
@@ -86,7 +88,7 @@ cadastroCompletoForm.addEventListener('submit', (e) => {
     cadastroCompletoForm.reset();
 
     // Envia para Node-RED
-    fetch('http://localhost:1881/cadastros/cadastros', {
+    fetch('http://localhost:1880/cadastros/cadastros', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(usuarioData)

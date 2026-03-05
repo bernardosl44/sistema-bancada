@@ -1,3 +1,5 @@
+//pedidos.js
+
 const pedidosForm = document.getElementById('pedidosForm');
 const pedidosList = document.getElementById('pedidosList');
 const pedidos = [];
