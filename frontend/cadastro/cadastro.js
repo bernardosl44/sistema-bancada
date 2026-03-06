@@ -1,4 +1,4 @@
-// cadastros.js
+// cadastro.js
 
 let usuarios = [];
 
@@ -46,7 +46,12 @@ function renderUsuarios(filter='') {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(u)
             }).then(res => {
-                if(res.ok) alert('Usuário enviado para Node-RED (excluir)');
+                if(res.ok){
+                    alert('Usuário enviado para Node-RED (excluir)');
+                    // Remove localmente
+                    usuarios = usuarios.filter(us => us.usuario !== u.usuario);
+                    renderUsuarios(buscarUsuario.value);
+                }
             });
         };
         cadastroList.appendChild(li);
@@ -79,12 +84,12 @@ cadastroCompletoForm.addEventListener('submit', (e) => {
         email: document.getElementById('cadEmailCompleto').value
     };
 
-    // Adiciona localmente se não existir
+    // Adiciona localmente à lista se não existir
     if(!usuarios.find(u => u.usuario === usuarioData.usuario)) {
         usuarios.push(usuarioData);
     }
 
-    renderUsuarios();
+    renderUsuarios(buscarUsuario.value);
     cadastroCompletoForm.reset();
 
     // Envia para Node-RED
@@ -92,11 +97,18 @@ cadastroCompletoForm.addEventListener('submit', (e) => {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(usuarioData)
-    }).then(res => {
-        if(res.ok){
-            console.log('Cadastro enviado para Node-RED');
+    })
+    .then(res => res.json().then(data => ({ ok: res.ok, data })))
+    .then(({ ok, data }) => {
+        console.log(data); // mostra a resposta do Node-RED
+        if(ok){
+            alert('Cadastro enviado com sucesso!');
         } else {
-            console.error('Erro ao enviar cadastro para Node-RED');
+            alert('Erro ao enviar conta: ' + (data.msg || 'Erro desconhecido'));
         }
-    }).catch(err => console.error('Erro de conexão:', err));
+    })
+    .catch(err => {
+        console.error('Erro de conexão:', err);
+        alert('Erro de conexão com Node-RED');
+    });
 });
