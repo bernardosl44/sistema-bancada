@@ -236,3 +236,46 @@ li:hover {
         grid-template-columns: 1fr;
     }
 }
+
+.btn-editar {
+    background: linear-gradient(45deg, #920c0c, #550707);
+    color: #fff;
+    margin-top: 5px;
+}
+
+.btn-editar:hover {
+    background: linear-gradient(45deg, #ff1a1a, #920c0c);
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ff1a1a;
+}
+
+.btn-excluir {
+    background: linear-gradient(45deg, #5c0000, #2a0000);
+    color: #fff;
+    margin-top: 5px;
+}
+
+.btn-excluir:hover {
+    background: linear-gradient(45deg, #ff0000, #7a0000);
+    transform: scale(1.1);
+    box-shadow: 0 0 12px #ff0000;
+}
+.btn-editar {
+    background: linear-gradient(45deg, #920c0c, #550707);
+}
+
+.btn-editar:hover {
+    background: linear-gradient(45deg, #ff1a1a, #920c0c);
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ff1a1a;
+}
+
+.btn-excluir {
+    background: linear-gradient(45deg, #5c0000, #2a0000);
+}
+
+.btn-excluir:hover {
+    background: linear-gradient(45deg, #ff0000, #7a0000);
+    transform: scale(1.1);
+    box-shadow: 0 0 12px #ff0000;
+}

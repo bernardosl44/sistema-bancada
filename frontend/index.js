@@ -2,6 +2,8 @@
 
 let usuarios = [];
 
+const API = "http://localhost:1880";
+
 const loginForm = document.getElementById('loginForm');
 const loginBox = document.getElementById('loginBox');
 const cadastroBox = document.getElementById('cadastroBox');
@@ -15,23 +17,31 @@ document.getElementById('toggleSenha').onclick = () => {
 // LOGIN
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
     const usuario = loginUsuario.value;
     const senha = loginSenha.value;
 
-    fetch("http://localhost:1880/autenticacao/autenticar",{
-        method:"POST",
-        body:JSON.stringify({usuario,senha})
-    }).then((resposta)=>{
-        console.log(resposta)
+    fetch(`${API}/autenticacao/autenticar`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ usuario, senha })
+    })
+    .then(resposta => {
         if(resposta.ok){
-            resposta.json()
+            return resposta.json();
+        } else {
+            throw new Error("Login inválido");
         }
-    }).then(()=>{
+    })
+    .then(() => {
         window.location.href = "bancada/bancada.html";
+    })
+    .catch(() => {
+        alert("Erro no login");
     });
 });
 
-// MOSTRAR CADASTRO INICIAL
+// MOSTRAR CADASTRO
 btnCadastrar.onclick = () => {
     loginBox.classList.add('hidden');
     cadastroBox.classList.remove('hidden');
@@ -47,7 +57,7 @@ document.getElementById('toggleSenhaCadastro').onclick = () => {
     cadSenha.type = cadSenha.type === 'password' ? 'text' : 'password';
 };
 
-// CADASTRO INICIAL - envia apenas para Node-RED
+// CADASTRO
 cadastroForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -60,13 +70,14 @@ cadastroForm.addEventListener('submit', (e) => {
         email: cadEmail.value
     };
 
-    fetch('http://localhost:1880/cadastrar', {
+    fetch(`${API}/cadastrar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(usuarioData)
-    }).then(res => {
+    })
+    .then(res => {
         if(res.ok){
-            alert('Conta enviada para Node-RED!');
+            alert('Conta enviada!');
             cadastroForm.reset();
             cadastroBox.classList.add('hidden');
             loginBox.classList.remove('hidden');
@@ -76,38 +87,34 @@ cadastroForm.addEventListener('submit', (e) => {
     });
 });
 
-// ABA CADASTROS - envia dados pro Node-RED
-cadastroCompletoForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+// CADASTRO COMPLETO (mantido)
+if(cadastroCompletoForm){
+    cadastroCompletoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    const usuarioData = {
-        nome: cadNomeCompleto.value,
-        sobrenome: cadSobrenomeCompleto.value,
-        nascimento: cadNascimentoCompleto.value,
-        usuario: cadUsuarioCompleto.value,
-        senha: cadSenhaCompleto.value,
-        email: cadEmailCompleto.value
-    };
+        const usuarioData = {
+            nome: cadNomeCompleto.value,
+            sobrenome: cadSobrenomeCompleto.value,
+            nascimento: cadNascimentoCompleto.value,
+            usuario: cadUsuarioCompleto.value,
+            senha: cadSenhaCompleto.value,
+            email: cadEmailCompleto.value
+        };
 
-    // Adiciona localmente à lista de usuários
-    if(!usuarios.find(u => u.usuario === cadUsuarioCompleto.value)) {
-        usuarios.push(usuarioData);
-    }
-
-    renderUsuarios(); // atualiza a lista visível
-
-    // Envia para Node-RED
-
-    fetch("http://localhost:1880/cadastros/cadastros", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(usuarioData)
-    }).then(res => {
-        if(res.ok){
-            alert('Cadastro enviado para Node-RED!');
-            cadastroCompletoForm.reset();
-        } else {
-            alert('Erro ao enviar cadastro.');
+        if(!usuarios.find(u => u.usuario === usuarioData.usuario)) {
+            usuarios.push(usuarioData);
         }
+
+        fetch(`${API}/cadastrar`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(usuarioData)
+        })
+        .then(res => {
+            if(res.ok){
+                alert('Cadastro enviado!');
+                cadastroCompletoForm.reset();
+            }
+        });
     });
-});
+}
